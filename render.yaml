@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: zongbin-webdev-server
+    runtime: node
+    plan: free
+    branch: a5
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /lab5/welcome
+    envVars:
+      - key: NODE_VERSION
+        value: 24.22.3
+      - key: SERVER_ENV
+        value: production
+      - key: CLIENT_URL
+        value: https://webdev-client-git-a5-zongbin-yans-projects.vercel.app
+      - key: SERVER_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
